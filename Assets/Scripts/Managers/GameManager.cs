@@ -17,5 +17,10 @@ public class GameManager
         }
     }
 
-    public GameManager() { }
+    public GameManager()
+    {
+        canvas = GameObject.FindWithTag("Canvas");
+    }
+
+    private GameObject canvas;
 }
