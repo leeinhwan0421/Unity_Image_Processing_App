@@ -22,5 +22,5 @@ public class GameManager
         canvas = GameObject.FindWithTag("Canvas");
     }
 
-    private GameObject canvas;
+    public GameObject canvas;
 }

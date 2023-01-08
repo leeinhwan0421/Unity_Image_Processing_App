@@ -11,7 +11,7 @@ public class ConvertRGBButton : CustomButton
     public override void OnClick()
     {
         GameObject imagePanel = GameObject.FindWithTag("ImagePanel");
-        SetImageColor setImageColor = imagePanel.GetComponent<SetImageColor>();
+        ImageColor setImageColor = imagePanel.GetComponent<ImageColor>();
 
         setImageColor.SetRGBColor();
     }
