@@ -1,3 +1,4 @@
+using OpenCvSharp.Demo;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,16 +7,17 @@ using UnityEngine.UI;
 
 public class ImageColor : MonoBehaviour
 {
-    enum ColorFormat
+    public enum ColorFormat
     {
         R8G8B8A8,
         HSV,
         GRAY,
+        EDGEDETECTION
     }
 
     private Image m_image;
     private ColorFormat curFormat;
-
+    public ColorFormat CurrentFormat { get { return curFormat; } }
 
     private void Awake()
     {
@@ -25,24 +27,34 @@ public class ImageColor : MonoBehaviour
         curFormat = ColorFormat.R8G8B8A8;
     }
 
-    public void SetHSVColor()
+    public void InitColorFormat()
     {
-        if (curFormat == ColorFormat.HSV)
-            return;
-
-        Color.RGBToHSV(m_image.color, out float h, out float s, out float v);
-        curFormat = ColorFormat.HSV;
-    }
-
-    public void SetRGBColor()
-    {
-        if (curFormat == ColorFormat.R8G8B8A8)
-            return;
-
-        Color.RGBToHSV(m_image.color, out float h, out float s, out float v);
         curFormat = ColorFormat.R8G8B8A8;
     }
 
+    public void SetColorFormat(ColorFormat format)
+    {
+        if (curFormat == format)
+            return;
+
+        curFormat = format;
+
+        if (curFormat == ColorFormat.GRAY)
+        {
+            m_image.sprite = GrayscaleImage.SpriteToGrayScale(m_image.sprite);
+            m_image.color = new Color(1.0f, 1.0f, 1.0f);
+        }
+        else if (curFormat == ColorFormat.EDGEDETECTION)
+        {
+            m_image.sprite = EdgeDectectionImage.SpriteToEdgeDectection(m_image.sprite);
+            m_image.color = new Color(1.0f, 1.0f, 1.0f);
+        }
+        else
+        {
+            GetComponent<ShowImage>().SetImage();
+        }
+
+    }
     public void SetRGBColor(float r, float g, float b)
     {
         Color newColor = new Color(r, g, b);

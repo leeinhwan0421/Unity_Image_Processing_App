@@ -193,8 +193,8 @@ RectTransform:
   m_Father: {fileID: 1336107076}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMin: {x: 1, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: -3.6999817, y: 0}
   m_SizeDelta: {x: 31, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -520,7 +520,19 @@ MonoBehaviour:
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1644732692}
+        m_TargetAssemblyTypeName: PopupRGBPanel, Assembly-CSharp
+        m_MethodName: OnScrollValueChanged
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &665469295
 GameObject:
   m_ObjectHideFlags: 0
@@ -554,8 +566,8 @@ RectTransform:
   m_Father: {fileID: 1938154347}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMin: {x: 1, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: -3.699997, y: 0}
   m_SizeDelta: {x: 31, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -630,8 +642,8 @@ RectTransform:
   m_Father: {fileID: 1116269059}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMin: {x: 1, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: -3.699997, y: 0}
   m_SizeDelta: {x: 31, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -1035,7 +1047,19 @@ MonoBehaviour:
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1644732692}
+        m_TargetAssemblyTypeName: PopupRGBPanel, Assembly-CSharp
+        m_MethodName: OnScrollValueChanged
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &1885562346
 GameObject:
   m_ObjectHideFlags: 0
@@ -1164,7 +1188,19 @@ MonoBehaviour:
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1644732692}
+        m_TargetAssemblyTypeName: PopupRGBPanel, Assembly-CSharp
+        m_MethodName: OnScrollValueChanged
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &1938154346
 GameObject:
   m_ObjectHideFlags: 0
@@ -1508,13 +1544,14 @@ GameObject:
   - component: {fileID: 1934297451493979429}
   - component: {fileID: 62423428}
   - component: {fileID: 62423429}
+  - component: {fileID: 1644732692}
   m_Layer: 5
   m_Name: PopupRGBPanel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1934297451493979431
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1577,6 +1614,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 128f2b1664aee434c8f1bc087aabd92e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1644732692
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1934297451493979448}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e23acf13c3746614380172e2171a6dba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  redScroll: {fileID: 1885562348}
+  redText: {fileID: 410855699}
+  greenScroll: {fileID: 516607884}
+  greenText: {fileID: 1072435140}
+  blueScroll: {fileID: 1773046480}
+  blueText: {fileID: 1150825205}
+  sampleColorImage: {fileID: 498472686}
 --- !u!1 &1934297451679818039
 GameObject:
   m_ObjectHideFlags: 0

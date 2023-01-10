@@ -10,28 +10,33 @@ public class ShowImage : MonoBehaviour
     private Image m_image;
 
     public Sprite sprite { get { return m_image.sprite;  } }
+    public Sprite currentSprite = null;
 
     private void Awake()
     {
         if (!TryGetComponent<Image>(out m_image))
             m_image = gameObject.AddComponent<Image>();
+
+        currentSprite = m_image.sprite;
     }
 
     #region SetImage Function
-    public void SetImage(Image image)
-    {
-        if (image == null)
-            return;
-
-        m_image.sprite = image.sprite;
-    }
-
     public void SetImage(Sprite sprite)
     {
         if (sprite == null)
             return;
 
+        GetComponent<ImageColor>().InitColorFormat();
+
+        m_image.color = new Color(1.0f, 1.0f, 1.0f);
         m_image.sprite = sprite;
+        currentSprite = sprite;
+    }
+
+    public void SetImage()
+    {
+        m_image.color = new Color(1.0f, 1.0f, 1.0f);
+        m_image.sprite = currentSprite;
     }
     #endregion
 }

@@ -18,41 +18,49 @@ public class PopupRGBPanel : MonoBehaviour
     [SerializeField] private Scrollbar blueScroll;
     [SerializeField] private Text blueText;
 
+    [SerializeField] private Image sampleColorImage;
+
     private float r;
     private float g;
     private float b;
     #endregion
 
-    public void Start()
+    public void OnEnable()
     {
         InitializeRGBScroll();
     }
 
-    public void InitializeRGBScroll()
+    private void InitializeRGBScroll()
     {
         GameObject imagepanel = GameObject.FindWithTag("ImagePanel");
-        imageColor = imagepanel.GetComponent<ImageColor>();
-
-        if (imageColor == null)
+        if (!imagepanel.TryGetComponent<ImageColor>(out imageColor))
         {
             Debug.LogError("NONE SETIMAGE COLOR AS" + gameObject.name);
             return;
         }
 
         Color color = imageColor.GetRGBColor();
-
-        redScroll.value = color.r;
-        redText.text = (color.r * 255).ToString();
-
-        greenScroll.value = color.g;
-        greenText.text = (color.g * 255).ToString();
-
-        blueScroll.value = color.b;
-        blueText.text = (color.b * 255).ToString();
+        SetScrollValueAndText(color);
     }
 
-    public void MoveedScroll(float value)
+    private void SetScrollValueAndText(Color color)
     {
+        redScroll.value = color.r;
+        redText.text = ((int)(color.r * 255)).ToString();
 
+        greenScroll.value = color.g;
+        greenText.text = ((int)(color.g * 255)).ToString();
+
+        blueScroll.value = color.b;
+        blueText.text = ((int)(color.b * 255)).ToString();
+
+        sampleColorImage.color = color;
+    }
+
+    public void OnScrollValueChanged()
+    {
+        Color color = new Color(redScroll.value, greenScroll.value, blueScroll.value);
+        imageColor.SetRGBColor(color.r, color.g, color.b);
+        SetScrollValueAndText(color);
     }
 }
