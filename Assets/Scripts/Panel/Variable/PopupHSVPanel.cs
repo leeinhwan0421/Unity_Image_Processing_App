@@ -7,7 +7,6 @@ using UnityEngine.UI;
 
 public class PopupHSVPanel : MonoBehaviour
 {
-    #region value
     private ImageColor imageColor;
 
     [SerializeField] private Scrollbar hueScroll;
@@ -20,7 +19,6 @@ public class PopupHSVPanel : MonoBehaviour
     [SerializeField] private Text valueText;
 
     [SerializeField] private Image sampleColorImage;
-#endregion
 
     public void OnEnable()
     {

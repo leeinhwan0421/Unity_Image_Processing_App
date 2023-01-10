@@ -29,7 +29,6 @@ public sealed class FileReadButton : CustomButton
         if (FileBrowser.Success)
         {
             byte[] bytes = FileBrowserHelpers.ReadBytesFromFile(FileBrowser.Result[0]);
-            GameManager.Instance.filePath = FileBrowser.Result[0];
 
             Sprite sprite = ConvertManager.ConvertByteArrayToSprite(bytes);
 
