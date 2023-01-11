@@ -19,10 +19,7 @@
 		private readonly Size requiredSize = new Size(128, 128);
 
 		#region Face recognizer training
-		/// <summary>
-		/// Routine to train face recognizer with sample images
-		/// </summary>
-		/*private void TrainRecognizer(string root)
+		private void TrainRecognizer(string root)
 		{
 			// This one was actually used to train the recognizer. I didn't push much effort and satisfied once it
 			// distinguished all detected faces on the sample image, for the real-world application you might want to
@@ -63,13 +60,13 @@
 				id++;
 			}
 
-			names = namesList.ToArray();
+			//names = namesList.ToArray();
 
 			// train recognizer and save result for the future re-use, while this isn't quite necessary on small training sets, on a bigger set it should
 			// give serious performance boost
 			recognizer.Train(mats, ids);
 			recognizer.Save(root + "/face-recognizer.xml");
-		}*/
+		}
 		#endregion
 
 		protected virtual void Awake()
@@ -97,10 +94,9 @@
                 var grayFace = new Mat(gray, faceRect);
                 if (requiredSize.Width > 0 && requiredSize.Height > 0)
                     grayFace = grayFace.Resize(requiredSize);
+				recognizer.Predict(grayFace, out _, out _);
 
-                recognizer.Predict(grayFace, out int label, out double confidence);
-
-				Scalar frameColor = Scalar.Red;
+				Scalar frameColor = Scalar.Green;
                 Cv2.Rectangle((InputOutputArray)image, faceRect, frameColor, 2);
             }
 
