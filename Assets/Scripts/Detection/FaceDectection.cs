@@ -21,13 +21,6 @@
 		#region Face recognizer training
 		private void TrainRecognizer(string root)
 		{
-			// This one was actually used to train the recognizer. I didn't push much effort and satisfied once it
-			// distinguished all detected faces on the sample image, for the real-world application you might want to
-			// refer to the following documentation:
-			// OpenCV documentation and samples: http://docs.opencv.org/3.0-beta/modules/face/doc/facerec/tutorial/facerec_video_recognition.html
-			// Training sets overview: https://www.kairos.com/blog/60-facial-recognition-databases
-			// Another OpenCV doc: http://docs.opencv.org/2.4/modules/contrib/doc/facerec/facerec_tutorial.html#face-database
-
 			int id = 0;
 			var ids = new List<int>();
 			var mats = new List<Mat>();
@@ -46,11 +39,10 @@
 				{
 					var bytes = File.ReadAllBytes(file);
 					var texture = new UnityEngine.Texture2D(2, 2);
-					texture.LoadImage(bytes); // <--- this one has changed in Unity 2017 API and on that version must be changed
+					texture.LoadImage(bytes);
 
 					ids.Add(id);
 
-					// each loaded texture is converted to OpenCV Mat, turned to grayscale (assuming we have RGB source) and resized
 					var mat = Unity.TextureToMat(texture);
 					mat = mat.CvtColor(ColorConversionCodes.BGR2GRAY);
 					if (requiredSize.Width > 0 && requiredSize.Height > 0)
@@ -60,12 +52,8 @@
 				id++;
 			}
 
-			//names = namesList.ToArray();
-
-			// train recognizer and save result for the future re-use, while this isn't quite necessary on small training sets, on a bigger set it should
-			// give serious performance boost
 			recognizer.Train(mats, ids);
-			recognizer.Save(root + "/face-recognizer.xml");
+			recognizer.Save(root + "/human-recognizer.xml");
 		}
 		#endregion
 
@@ -96,7 +84,7 @@
                     grayFace = grayFace.Resize(requiredSize);
 				recognizer.Predict(grayFace, out _, out _);
 
-				Scalar frameColor = Scalar.Green;
+				Scalar frameColor = Scalar.Red;
                 Cv2.Rectangle((InputOutputArray)image, faceRect, frameColor, 2);
             }
 
