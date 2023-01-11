@@ -1,6 +1,5 @@
 # Unity_Image_Processing_App
- 🖼 Convert Image to grayColor or HsvColor
- 📃 Use OpenCV asset, i will make Edge Convolution, human face detection... more
+ 🖼 Image to grayColor, HsvColor, human face detection
  
  <img src="https://img.shields.io/badge/Unity-FFFFFF?style=for-the-badge&logo=Unity&logoColor=black">
  
